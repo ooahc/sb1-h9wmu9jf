@@ -13,42 +13,42 @@ export function ToolCard({ tool, viewMode }: ToolCardProps) {
   
   const cardClass = viewMode === 'grid'
     ? 'w-full'
-    : 'flex items-start gap-6 w-full';
+    : 'flex flex-col sm:flex-row items-start gap-4 sm:gap-6 w-full';
 
   return (
     <div className={`
-      bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow
+      bg-white rounded-lg sm:rounded-xl p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow
       border border-gray-200 ${cardClass}
     `}>
-      <div className={viewMode === 'grid' ? 'space-y-4' : 'flex-1'}>
+      <div className={viewMode === 'grid' ? 'space-y-3 sm:space-y-4' : 'flex-1'}>
         <div className="flex items-center gap-3">
           <div className="p-2 bg-gray-100 rounded-lg">
-            <Icon className="h-6 w-6 text-gray-700" />
+            <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-gray-700" />
           </div>
-          <h3 className="text-lg font-semibold">{tool.name}</h3>
+          <h3 className="text-base sm:text-lg font-semibold">{tool.name}</h3>
         </div>
         
-        <p className="text-gray-600 mt-2">{tool.description}</p>
+        <p className="text-sm sm:text-base text-gray-600 mt-2">{tool.description}</p>
         
-        <div className="flex flex-wrap gap-2 mt-3">
+        <div className="flex flex-wrap gap-1.5 sm:gap-2 mt-3">
           {tool.tags.map((tag) => (
             <span
               key={tag}
-              className="px-2 py-1 bg-gray-100 text-gray-600 text-sm rounded-md"
+              className="px-1.5 sm:px-2 py-0.5 sm:py-1 bg-gray-100 text-gray-600 text-xs sm:text-sm rounded-md"
             >
               {tag}
             </span>
           ))}
         </div>
         
-        <div className="flex items-center justify-between mt-4">
-          <div className="flex items-center gap-2">
-            <Star className="h-4 w-4 text-yellow-400 fill-current" />
-            <span className="text-sm text-gray-600">{tool.rating}</span>
+        <div className="flex items-center justify-between mt-3 sm:mt-4">
+          <div className="flex items-center gap-1 sm:gap-2">
+            <Star className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-yellow-400 fill-current" />
+            <span className="text-xs sm:text-sm text-gray-600">{tool.rating}</span>
           </div>
           
           <span className={`
-            px-2 py-1 rounded-md text-sm
+            px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md text-xs sm:text-sm
             ${tool.pricing === 'Free' ? 'bg-green-100 text-green-700' :
               tool.pricing === 'Freemium' ? 'bg-blue-100 text-blue-700' :
               'bg-purple-100 text-purple-700'}
@@ -61,9 +61,9 @@ export function ToolCard({ tool, viewMode }: ToolCardProps) {
           href={tool.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block mt-4 px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
+          className="inline-block mt-3 sm:mt-4 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-900 text-white text-sm sm:text-base rounded-lg hover:bg-gray-800 transition-colors"
         >
-          Visit Tool
+          访问工具
         </a>
       </div>
     </div>
